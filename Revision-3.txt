@@ -1,0 +1,80 @@
+{{ This is a comment utilizing special syntax. }}
+{{{ Another comment consisted of literal text. }}}
+{{{{ Such comments must be enclosed within the same amount of {}. }}}}
+
+{{
+  BML aims to make minimal use of markers and special characters!
+  But that just tells my No.2 dislike of XML.
+  The No.1 is that there is no real reason not to prefer XML for now.
+}}
+
+here is a text node including the whitespace at the top level
+
+{article
+  {{ The parser can provide an implicit root node. }}
+
+  {style|
+    {fonts|
+      {font {size|16px} {name|Comic Sans} }
+      {font {size|16px} {name|Comic Neue} }
+    |fonts}
+  |style}
+
+  {import utils/comment}
+  {import {utils: banner copyright} }
+
+  |
+
+  {comment|
+    Metadata/Attributes/Arguments and content are separated by a pipe \x7C.
+  |comment}
+
+  {banner {id|banner} | {utils/banner {"it's beautiful?.svg"} } }
+
+  {title| BML: Bracketed Markup Language }
+
+  {description| {`Composing rich-text documents with {ease}.`} }
+
+  {more|
+
+    Normally, curly brackets \{\} and \| in text need to be escaped with \\.
+
+    {````
+      To insert a block of text which contains a lot of {} and |\
+      you can surround the text with: {` `} or {`` ``} or {``` ```} and so on.
+
+      No special syntax is recognizable in this block.
+    ````}
+
+    Blocks can be optionally ended with their tag names prefixed by \|.
+
+  |more}
+
+  {utils/copyright {by article/author} }
+
+  {ref {id|banner} }
+
+  {comment| end of this messy document}
+|article}
+
+{{ Somethings to note:
+
+  \x{HHhhHHhhHH....} byte string
+  \u{H,HH,HHH,HHHH,HHHHH,HHHHHH,...} UTF-8 byte string
+  {"..."} {'...'} multi-line string with escaping
+}}
+
+{{{
+  Want nested comments like {{ this }} to easily comment out some content?
+  That's not a very good idea as raw text may contain the closing tag.
+  So manually editing nested comments in such situations is tiresome.
+  No, there is no nested comment nor other special characters in this block.
+
+  Do you mean {| ignored {| nested } structure |} ?
+
+  And no wonder people might create template languages in BML documents like...
+      {{template birthday-card name |
+          {card | Happy Birthday to You, {name}! }
+      |template}}
+  Hard to tell if that is a good idea.
+}}}
