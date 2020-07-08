@@ -1,0 +1,83 @@
+{?bml {version|0.0.0} {encoding|UTF-8} }
+
+{: This is a comment utilizing special syntax. :}
+{:: Another comment consisted of literal text. ::}
+{::: Such comments must be enclosed within the same amount of colons. :::}
+
+{::
+  Want nested comments like {: this :} to easily comment out some content?
+  That's not a very good idea as raw text may contain the closing tag.
+  So manually editing nested comments in such situations is tiresome.
+  No, there is no nested comment nor other special characters in this block.
+
+  Do you mean {| ignored {| nested } structure |} ?
+::}
+
+{:
+  {?bml ... } is a very special block. Please ignore it for now.
+
+  BML aims to make minimal use of markers and special characters!
+  But that just tells my No.2 dislike of XML.
+  The No.1 is that there is no real reason not to prefer XML for now.
+
+  XML documents can be converted to BML documents but not the other way around?
+  But actually I never read the full specs of XML :P
+  And no time & no energy for the development of tool chains around BML.
+:}
+
+here is a text node including the whitespace at the top level
+
+{article
+  {: The parser can provide an implicit root node. :}
+
+  {style|
+    {fonts|
+      {font {size|16px} {name|Comic Sans} }
+      {font {size|16px} {name|Comic Neue} }
+    |fonts}
+  |style}
+
+  {import utils/comment}
+  {import {utils: banner copyright} }
+
+  |
+
+  {comment|
+    Metadata/Attributes/Arguments and content are separated by a pipe \x7C.
+  |comment}
+
+  {banner {id|banner} | {utils/banner {"is beautiful?.svg"} } }
+
+  {title| BML: Bracketed Markup Language }
+
+  {description| {{ Composing rich-text documents with {ease}. }} }
+
+  {more|
+
+    Normally, curly brackets \{\} and \| in text need to be escaped with \\.
+
+    {|||{
+      To insert blocks of text which contains a lot of {} you can surround the
+      text with: {{ and }}, or {|{ and }|}, or {||{ and }||}, and so on.
+
+      No special syntax is recognizable in this block.
+    }|||}
+
+    Blocks can be optionally ended with their tag names prefixed by \|.
+
+    There must be no content between the tag name and \{ or \}.
+
+  |more}
+
+  {utils/copyright {by article/author} }
+
+  {ref {id|banner} }
+
+  {comment| end of this messy document}
+|article}
+
+{:
+  \x{HHhhHHhhHH....} byte string
+  \u{H,HH,HHH,HHHH,HHHHH,HHHHHH,...} UTF-8 byte string
+  {"..."} {'...'} {`...`} multi-line string with escaping
+:}
